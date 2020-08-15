@@ -264,6 +264,8 @@ event.onmemorywrite(fifteenthFunc, 0X3CF)
 -- the "main function" for the program
 while numTrials < 2500 do
 
+	needToLoad = false
+	needToSave = false
 	needToExtraSave = false
 	currentFrame = 0
 	frameOfLastSave = 0
