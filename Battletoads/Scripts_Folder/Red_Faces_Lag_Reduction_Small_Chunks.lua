@@ -228,7 +228,7 @@ function goBackwardsOrForwards()
 
 	-- this branch is reached when RNG_2 & 7 IS equal to 7, which is a success.
 	-- in this case, we add the lag since the last save state to the running lag total, set the lag after save state counter to 0,
-	-- set the frame number that the last save occured on to the calue of the current frame, increase the count of the number of objects loaded by 1,
+	-- set the frame number that the last save occured on to the value of the current frame, increase the count of the number of objects loaded by 1,
 	-- and set needToSave to true to signal that we need to save state to slot 5 when the emu.frameadvance() function finishes
 	else
 		currentNumLagBeforeSave = currentNumLagBeforeSave + currentNumLagAfterSave
