@@ -359,6 +359,7 @@ while numTrials < 2500 do
 
 		--if needToLoad is true, then we load the savestate in slot 5, and set needToLoad to false
 		if needToLoad == true then
+			currentNumLagAfterSave = 0
 			savestate.loadslot(5)
 			needToLoad = false
 		end
@@ -366,6 +367,8 @@ while numTrials < 2500 do
 
 		--if needToSave is true, then we savestate to slot 5, and set needToSave to false
 		if needToSave == true then
+			currentNumLagBeforeSave = currentNumLagBeforeSave + currentNumLagAfterSave
+			currentNumLagAfterSave = 0
 			savestate.saveslot(5)
 			needToSave = false
 		end
