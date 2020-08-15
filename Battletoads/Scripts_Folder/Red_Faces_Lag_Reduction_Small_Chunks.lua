@@ -349,7 +349,7 @@ while numTrials < 2500 do
 		--it will happen in the middle of the emu.frameadvance() function executing)
 		emu.frameadvance()
 	
-		--if a lag frame occured, then we increase the count for the number of lag frames that occured since the last frame
+		--if a lag frame occured, then we increase the count for the number of lag frames that occured since the last save state.
 		if emu.islagged() then
 			currentNumLagAfterSave = currentNumLagAfterSave + 1
 		end
