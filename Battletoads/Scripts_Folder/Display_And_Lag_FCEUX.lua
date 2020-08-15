@@ -91,7 +91,7 @@ function powerOfTwoCalculator(myInt)
 end
 
 
--- stores the names of buttons and how many squares to the left each button is starting from the left-most box.
+-- stores the names of buttons and what power of 2, when bitwise ANDed with the input number, will produce a non-zero number when the button is pressed.
 InputStringArray = {{"U", 4}, {"D", 5}, {"L", 6}, {"R", 7}, {"S", 3}, {"s", 2}, {"B", 1}, {"A", 0}}
 
 -- main execution loop.
