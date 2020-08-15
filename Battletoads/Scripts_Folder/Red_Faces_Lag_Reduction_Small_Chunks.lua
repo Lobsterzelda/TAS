@@ -180,7 +180,7 @@ end
 -- When current frame equals earlierBetterSave for the next time, then a new save state will be written to slot 5. 
 -- This cuts down on how long the script runs, since, for example, if there were 100 frames b/w two objects loading and it took 30 attempts 
 -- to get RNG_2 to have the right value, then this would require running through 3,000 frames to get the right value, 
--- while if a new save state was made on the 92nd frame on the second try, then only 416 frames would need to be run through to get the right value)
+-- while if a new save state was made on the 92nd frame on the second try, then only 416 frames would need to be run through to get the right value.
 
 -- Other Note: If an object loads on the same frame that the last save state was made on and RNG_2 & 7 wasn't 7, 
 -- then there is no way to manipulate RNG_2 to have the right value, since there are 0 frames of input to work with. 
