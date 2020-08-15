@@ -38,6 +38,7 @@ buttonsPressed[i] = {A = false, B = false, Select = false, Right = false, Left =
 end
 
 
+numTrials = 0
 currentFrame = 0
 frameOfLastSave = 0
 numObjectsLoaded = 0
@@ -54,109 +55,109 @@ currentBestLag = 999
 
 -- function called whenever 0X3C1 is written to
 function firstFunc()
-if memory.readbyte(0X3C1) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3C1) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 
 -- function called whenever 0X3C2 is written to
 function secondFunc()
-if memory.readbyte(0X3C2) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3C2) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3C3 is written to
 function thirdFunc()
-if memory.readbyte(0X3C3) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3C3) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3C4 is written to
 function fourthFunc()
-if memory.readbyte(0X3C4) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3C4) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3C5 is written to
 function fifthFunc()
-if memory.readbyte(0X3C5) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3C5) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3C6 is written to
 function sixthFunc()
-if memory.readbyte(0X3C6) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3C6) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3C7 is written to
 function seventhFunc()
-if memory.readbyte(0X3C7) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3C7) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3C8 is written to
 function eighthFunc()
-if memory.readbyte(0X3C8) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3C8) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3C9 is written to
 function ninthFunc()
-if memory.readbyte(0X3C9) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3C9) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 
 -- function called whenever 0X3CA is written to
 function tenthFunc()
-if memory.readbyte(0X3CA) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3CA) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3CB is written to
 function eleventhFunc()
-if memory.readbyte(0X3CB) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3CB) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3CC is written to
 function twelthFunc()
-if memory.readbyte(0X3CC) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3CC) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3CD is written to
 function thirteenthFunc()
-if memory.readbyte(0X3CD) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3CD) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3CE is written to
 function fourteenthFunc()
-if memory.readbyte(0X3CE) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3CE) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 -- function called whenever 0X3CF is written to
 function fifteenthFunc()
-if memory.readbyte(0X3CF) ~= 0 then
-	goBackwardsOrForwards()
-end
+	if memory.readbyte(0X3CF) ~= 0 then
+		goBackwardsOrForwards()
+	end
 end
 
 
@@ -171,53 +172,53 @@ end
 
 function goBackwardsOrForwards()
 
-RNG_2_Byte = memory.readbyte(0X26)
+	RNG_2_Byte = memory.readbyte(0X26)
 
--- if RNG_2_Byte & 7 wasn't equal to 7, then we need to either load an earlier save state or set isFailure to true if the attempt failed.
-if bit.band(RNG_2_Byte, 7) ~= 7 then
+	-- if RNG_2_Byte & 7 wasn't equal to 7, then we need to either load an earlier save state or set isFailure to true if the attempt failed.
+	if bit.band(RNG_2_Byte, 7) ~= 7 then
 
-	--if more than 8 frames have passed since the last save and RNG_2 didn't have a correct value on this frame, then we set an extra save to occur on currentFrame - 8
-	if currentFrame - frameOfLastSave > 8 then
-		needToExtraSave = true
-		earlierBetterSave = currentFrame - 8
-	end	
+		--if more than 8 frames have passed since the last save and RNG_2 didn't have a correct value on this frame, then we set an extra save to occur on currentFrame - 8
+		if currentFrame - frameOfLastSave > 8 then
+			needToExtraSave = true
+			earlierBetterSave = currentFrame - 8
+		end	
 
-	-- if the current frame is the same frame that the last save state was made on, then an error occured, and we set isFailure to true and move on to the next trial
-	if frameOfLastSave + 1 >= currentFrame then
-		isFailure = true
-		io.write("Attempt failed!\n")
-		io.flush()
+		-- if the current frame is the same frame that the last save state was made on, then an error occured, and we set isFailure to true and move on to the next trial
+		if frameOfLastSave + 1 >= currentFrame then
+			isFailure = true
+			io.write("Attempt failed!\n")
+			io.flush()
+		end
+
+		-- resetting the lag counter for the section after the last save state, and setting current frame back to the frame of the earlier save
+		currentNumLagAfterSave = 0
+		currentFrame = frameOfLastSave
+		attemptsInRow = attemptsInRow + 1
+
+		-- if 5000 or more attempts to get a favorable value of RNG_2 have happened in a row since the last save state was saved to, then the attempt is considered to have failed, and we move on to the next trial.
+		if attemptsInRow >= 5000 then
+			isFailure = true
+			io.write(" Attempt failed!\n")
+			io.flush()
+		end
+
+		-- signals to load the savestate in slot 5 when the emu.frameadvance() function finishes
+		needToLoad = true
+
+
+	-- this branch is reached when RNG_2 & 7 IS equal to 7, which is a success.
+	-- in this case, we add the lag since the last save state to the running lag total, set the lag after save state counter to 0,
+	-- set the frame number that the last save occured on to the calue of the current frame, increase the count of the number of objects loaded by 1,
+	-- and set needToSave to true to signal that we need to save state to slot 5 when the emu.frameadvance() function finishes
+	else
+		currentNumLagBeforeSave = currentNumLagBeforeSave + currentNumLagAfterSave
+		attemptsInRow = 0
+		currentNumLagAfterSave = 0
+		frameOfLastSave = currentFrame
+		needToSave = true
+		numObjectsLoaded = numObjectsLoaded + 1
+
 	end
-
--- resetting the lag counter for the section after the last save state, and setting current frame back to the frame of the earlier save
-currentNumLagAfterSave = 0
-currentFrame = frameOfLastSave
-attemptsInRow = attemptsInRow + 1
-
--- if 5000 or more attempts to get a favorable value of RNG_2 have happened in a row since the last save state was saved to, then the attempt is considered to have failed, and we move on to the next trial.
-if attemptsInRow >= 5000 then
-isFailure = true
-io.write(" Attempt failed!\n")
-io.flush()
-end
--- signals to load the savestate in slot 5 when the emu.frameadvance() function finishes
-needToLoad = true
-
-
---this branch is reached when RNG_2 & 7 IS equal to 7, which is a success.
--- in this case, we add the lag since the last save state to the running lag total, set the lag after save state counter to 0,
--- set the frame number that the last save occured on to the calue of the current frame, increase the count of the number of objects loaded by 1,
--- and set needToSave to true to signal that we need to save state to slot 5 when the emu.frameadvance() function finishes
-else
-currentNumLagBeforeSave = currentNumLagBeforeSave + currentNumLagAfterSave
-attemptsInRow = 0
-currentNumLagAfterSave = 0
-frameOfLastSave = currentFrame
-needToSave = true
-numObjectsLoaded = numObjectsLoaded + 1
-
-
-end
 end
 
 
@@ -241,8 +242,6 @@ event.onmemorywrite(fifteenthFunc, 0X3CF)
 
 
 -- the "main function" for the program
-numTrials = 0
-
 while numTrials < 2500 do
 
 	needToExtraSave = false
