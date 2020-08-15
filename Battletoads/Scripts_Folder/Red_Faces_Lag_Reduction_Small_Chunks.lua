@@ -40,7 +40,7 @@ attemptsInRow = 0
 -- buttonsPressed is an array which stores the button presses on player 1's controller for 200 frames.
 buttonsPressed = {}
 for i = 0, 200 do
-buttonsPressed[i] = {A = false, B = false, Select = false, Right = false, Left = false, Up = false}
+buttonsPressed[i] = {A = false, B = false, Select = false, Start = false, Right = false, Left = false, Up = false, Down = false}
 end
 
 
