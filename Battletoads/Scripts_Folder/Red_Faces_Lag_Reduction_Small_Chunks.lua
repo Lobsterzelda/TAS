@@ -6,25 +6,30 @@
 -- Random inputs are applied throughout this process, and the reloading of save states continues until a favorable RNG-2 value is reached.
 -- The above process continues until either 10 objects have loaded into memory or 200 frames have passed, at which point the total number of lag frames
 -- that occured is calculated to determine if this try had less lag frames than the previous best.
--- 2500 trials are run using this process, and whenever an attempt generates a new lowest number of lag frames, the button presses that occured on the attempt are written to a file named "resultsOfRedFaceScriptFile.txt"
+-- 2500 trials are run using this process, and whenever an attempt generates a new lowest number of lag frames, 
+-- the button presses that occured on the attempt are written to a file named "resultsOfRedFaceScriptFile.txt"
 -- The button presses are written to the file in a format that will let them be copy and pasted directly to the "Input Log.txt" file of a bk2 file. 
--- The bk2 file that they are copied to can then be used to create a new tasproj file, and the inputs from that tasproj file can be copied directly to the tasproj file where your movie is. This way, you don't have to manually enter in the button presses for each frame.
+-- The bk2 file that they are copied to can then be used to create a new tasproj file,
+-- and the inputs from that tasproj file can be copied directly to the tasproj file where your movie is. 
+-- This way, you don't have to manually enter in the button presses for each frame.
 
--- IMPORTANT NOTE: Save state 1 must be set by the user to store where the script should start testing from BEFORE this script is run for the first time (otherwise, an exception will occur)
+-- IMPORTANT NOTE: Save state 1 must be set by the user to store where the script should start testing from BEFORE 
+-- this script is run for the first time (otherwise, an exception will occur)
 -- Save state 5 is updated after every frame that a new object is created (save state 5 is also what's loaded when an attempt fails)
 
 
 -- initializing RNG for random button presses
 math.randomseed( os.time() )
 
--- to change the name of the output file, change the name "resultsOfRedFaceScriptFile.txt" on the line below to whatever you would like the output file to be called.
+-- to change the name of the output file, change the name "resultsOfRedFaceScriptFile.txt" on the line below 
+-- to whatever you would like the output file to be called.
 file = io.open("resultsOfRedFaceScriptFile.txt", "w")
 io.output(file)
 io.write("Starting up battletoads lag script: ")
 io.flush()
 
 NeedToLoad = false
-NeedToSave = true
+NeedToSave = false
 earlierBetterSave = 0
 needToExtraSave = false
 
@@ -50,9 +55,9 @@ currentNumLagAfterSave = 0
 currentBestLag = 999
 
 
--- the following 15 functions are called by event.onmemorywrite() whenever a new value is written to one of the fifteen object ID slots (which go from 0X3C1 to 0X3CF)
--- each function checks to see if a non-zero value was written to the ID section. If the value written was non-zero, then the function goBackwardsOrForwards() is called
--- Otherwise, if zero was written, that means the object was deleted, in which case goBackwardsOrForwards() is not called
+-- the following 15 functions are called by event.onmemorywrite() whenever a new value is written to one of the 15 object ID slots (which go from 0X3C1 to 0X3CF)
+-- each function checks to see if a non-zero value was written to the ID section. If the value written was non-zero, then the function goBackwardsOrForwards() 
+-- is called. Otherwise, if zero was written, that means the object was deleted, in which case goBackwardsOrForwards() is not called
 
 -- function called whenever 0X3C1 is written to
 function firstFunc()
@@ -163,13 +168,23 @@ end
 
 
 -- this function is called whenever a new object is created. The function checks to see if the value of RNG_2 & 7 is 7.
--- If RNG_2 & 7 is 7, then the function sets needToSave to true to signal that a savestate should be written into slot 5 at the end of this frame, adds the lag that occured from the last section of input to the running total, increases the number of loaded objects by 1 and effectively "moves forwards".
--- If RNG_2 & 7 wasn't 7, then needToLoad is set to true to signal that savestate 5 should be re-loaded at the end of this frame, the counter for lag that occured since the last save state is set to 0, and the value for current frame is set to the frame number of the last save (in effect, "going backwards")
+-- If RNG_2 & 7 is 7, then the function sets needToSave to true to signal that a savestate should be written into slot 5 at the end of this frame, 
+-- adds the lag that occured from the last section of input to the running total, increases the number of loaded objects by 1 and effectively "moves forwards".
+-- If RNG_2 & 7 wasn't 7, then needToLoad is set to true to signal that savestate 5 should be re-loaded at the end of this frame, 
+-- the counter for lag that occured since the last save state is set to 0, 
+-- and the value for current frame is set to the frame number of the last save (in effect, "going backwards")
 
--- Note: if there were more than 8 frames b/w two objects loading and RNG_2 & 7 wasn't 7, then needToExtraSave will be set to true, earlierBetterSave will be set to currentFrame - 8 and save state 5 will be reloaded. When current frame equals earlierBetterSave for the next time, then a new save state will be written to slot 5. This cuts down
--- on how long the script runs, since for example, if there were 100 frames b/w two objects loading and it took 30 attempts to get RNG_2 to have the right balue, then this would require running through 3,000 frames to get the right value, while if a new save state was made on the 92nd frame on the second try, then only 416 frames would need to be run through to get the right value)
+-- Note: if there were more than 8 frames b/w two objects loading and RNG_2 & 7 wasn't 7, then needToExtraSave will be set to true, 
+-- earlierBetterSave will be set to currentFrame - 8 and save state 5 will be reloaded. 
+-- When current frame equals earlierBetterSave for the next time, then a new save state will be written to slot 5. 
+-- This cuts down on how long the script runs, since for example, if there were 100 frames b/w two objects loading and it took 30 attempts 
+-- to get RNG_2 to have the right value, then this would require running through 3,000 frames to get the right value, 
+-- while if a new save state was made on the 92nd frame on the second try, then only 416 frames would need to be run through to get the right value)
 
--- Other Note: If an object loads on the same frame that the last save state was made on and RNG_2 & 7 wasn't 7, then there is no way to manipulate RNG_2 to have the right value, since there are 0 frames of input to work with. As such, this attempt is considered a failure, all values for lag and frame numbers are reset, save state 1 is reloaded, and a new trial begins right after this.
+-- Other Note: If an object loads on the same frame that the last save state was made on and RNG_2 & 7 wasn't 7, 
+-- then there is no way to manipulate RNG_2 to have the right value, since there are 0 frames of input to work with. 
+-- As such, this attempt is considered a failure, all values for lag and frame numbers are reset, 
+-- save state 1 is reloaded, and a new trial begins right after this.
 
 function goBackwardsOrForwards()
 
@@ -178,13 +193,15 @@ function goBackwardsOrForwards()
 	-- if RNG_2_Byte & 7 wasn't equal to 7, then we need to either load an earlier save state or set isFailure to true if the attempt failed.
 	if bit.band(RNG_2_Byte, 7) ~= 7 then
 
-		--if more than 8 frames have passed since the last save and RNG_2 didn't have a correct value on this frame, then we set an extra save to occur on currentFrame - 8
+		--if more than 8 frames have passed since the last save and RNG_2 didn't have a correct value on this frame, 
+		--then we set an extra save to occur on currentFrame - 8
 		if currentFrame - frameOfLastSave > 8 then
 			needToExtraSave = true
 			earlierBetterSave = currentFrame - 8
 		end	
 
-		-- if the current frame is the same frame that the last save state was made on, then an error occured, and we set isFailure to true and move on to the next trial
+		-- if the current frame is the same frame that the last save state was made on, then an error occured, 
+		-- and we set isFailure to true and move on to the next trial
 		if frameOfLastSave + 1 >= currentFrame then
 			isFailure = true
 			io.write("Attempt failed!\n")
@@ -196,7 +213,8 @@ function goBackwardsOrForwards()
 		currentFrame = frameOfLastSave
 		attemptsInRow = attemptsInRow + 1
 
-		-- if 5000 or more attempts to get a favorable value of RNG_2 have happened in a row since the last save state was saved to, then the attempt is considered to have failed, and we move on to the next trial.
+		-- if 5000 or more attempts to get a favorable value of RNG_2 have happened in a row since the last save state was saved to, 
+		-- then the attempt is considered to have failed, and we move on to the next trial.
 		if attemptsInRow >= 5000 then
 			isFailure = true
 			io.write(" Attempt failed!\n")
@@ -259,19 +277,23 @@ while numTrials < 2500 do
 	attemptsInRow = 0
 	numObjectsLoaded = 0
 
-	-- the process below repeats while less than 10 objects have loaded, the current attempt wasn't a failure, the number of lag frames that have occured up to the last save state is less than the current lowest number of total lag frames for a trial, and the number of frames advanced from the starting frame is less than 200
+	-- the process below repeats while less than 10 objects have loaded, the current attempt wasn't a failure, 
+	-- the number of lag frames that have occured up to the last save state is less than the current lowest number of total lag frames for a trial, 
+	-- and the number of frames advanced from the starting frame is less than 200
 	while numObjectsLoaded < 10 and isFailure == false and currentNumLagBeforeSave < currentBestLag and currentFrame < 200 do
 
 
 		-- randomly deciding what buttons to press on player 1's controller for this frame
-		-- the A, B, Left, Right, Up, and Select buttons each have a random 50-50 chance of being set to true or false for player 1's controller. Down and Start on player 1's controller are always set to false (not pressed), and no buttons on player 2's controller are pressed
+		-- the A, B, Left, Right, Up, and Select buttons each have a random 50-50 chance of being set to true or false for player 1's controller. 
+		-- Down and Start on player 1's controller are always set to false (not pressed), and no buttons on player 2's controller are pressed
 		if math.random(0, 1) == 0 and needToExtraSave == false then
 			buttonsPressed[currentFrame]["A"] = true
 		else
 			buttonsPressed[currentFrame]["A"] = false
 		end
 
-		-- button B isn't pressed if it has been 10 frames or less since the starting frame, since this sometimes causes the toad to punch left and miss the pole
+		-- button B isn't pressed if it has been 10 frames or less since the starting frame, 
+		-- since this sometimes causes the toad to punch left and miss the pole
 		if math.random(0, 1) == 0 and needToExtraSave == false and currentFrame >= 10 then
 			buttonsPressed[currentFrame]["B"] = true
 		else
@@ -309,9 +331,10 @@ while numTrials < 2500 do
 
 		joypad.set(buttonsPressed[currentFrame], 1)
 
-		--if needToExtraSave was set to true and the current frame equals the frame that the save is supposed to happen on, then we save to slot 5, add the
-		--number of lag frames that happened since the last save to the running total, set the number of lag frames after the last save to 0, set the frame of
-		--the last save to be the current frame, and set needToExtraSave to false
+		-- if needToExtraSave was set to true and the current frame equals the frame that the save is supposed to happen on, 
+		-- then we save to slot 5, add the number of lag frames that happened since the last save to the running total, 
+		-- set the number of lag frames after the last save to 0, set the frame of the last save to be the current frame,
+		-- and set needToExtraSave to false
 		if needToExtraSave and currentFrame == earlierBetterSave then
 			savestate.saveslot(5)
 			currentNumLagBeforeSave = currentNumLagBeforeSave + currentNumLagAfterSave
@@ -321,7 +344,8 @@ while numTrials < 2500 do
 		end
 
 		currentFrame = currentFrame + 1	
-		--advancing forwards 1 frame (if goBackwardsOrForwards() is going to be called, it will happen in the middle of the emu.frameadvance() function executing)
+		--advancing forwards 1 frame (if goBackwardsOrForwards() is going to be called, 
+		--it will happen in the middle of the emu.frameadvance() function executing)
 		emu.frameadvance()
 	
 		--if a lag frame occured, then we increase the count for the number of lag frames that occured since the last frame
@@ -354,7 +378,8 @@ while numTrials < 2500 do
 	numTrials = numTrials + 1
 
 
-	--if we had a new best for least number of lag frames, then we write out all 200 frames of player 1's input to the output file in a format that will let it be copy and pasted directly into the "Input Log.txt" file of a 2 player bk2 file
+	--if we had a new best for least number of lag frames, then we write out all 200 frames of player 1's input to the output file in a format 
+	--that will let it be copy and pasted directly into the "Input Log.txt" file of a 2 player bk2 file
 	if isFailure == false and currentNumLagBeforeSave + currentNumLagAfterSave < currentBestLag then
 		io.write("New best of ", currentNumLagBeforeSave + currentNumLagAfterSave, " frames of lag!\n\n")
 		currentBestLag = currentNumLagBeforeSave + currentNumLagAfterSave
