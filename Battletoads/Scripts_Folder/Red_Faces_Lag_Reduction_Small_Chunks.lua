@@ -7,7 +7,9 @@
 -- The above process continues until either 10 objects have loaded into memory or 200 frames have passed, at which point the total number of lag frames
 -- that occured is calculated to determine if this try had less lag frames than the previous best.
 -- 2500 trials are run using this process, and whenever an attempt generates a new lowest number of lag frames, the button presses that occured on the attempt are written to a file named "resultsOfRedFaceScriptFile.txt"
--- The button presses are written to the file in a format that will let them be copy and pasted directly to the "Input Log.txt" file of a bk2 file. The bk2 file that they are copied to can then be used to create a new tasproj file, and the inputs from that tasproj file can be copied directly to the tasproj file where your movie is. This way, you don't have to manually enter in the button presses for each frame.
+-- The button presses are written to the file in a format that will let them be copy and pasted directly to the "Input Log.txt" file of a bk2 file. 
+-- The bk2 file that they are copied to can then be used to create a new tasproj file, and the inputs from that tasproj file can be copied directly to the tasproj file where your movie is. This way, you don't have to manually enter in the button presses for each frame.
+
 -- IMPORTANT NOTE: Save state 1 must be set by the user to store where the script should start testing from BEFORE this script is run for the first time (otherwise, an exception will occur)
 -- Save state 5 is updated after every frame that a new object is created (save state 5 is also what's loaded when an attempt fails)
 
