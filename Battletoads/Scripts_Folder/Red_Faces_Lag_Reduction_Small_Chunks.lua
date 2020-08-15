@@ -168,9 +168,9 @@ function fifteenthFunc()
 end
 
 
--- this function is called whenever a new object is created. The function checks to see if the value of RNG_2 & 7 is 7.
+-- This function is called whenever a new object is created. The function checks to see if the value of RNG_2 & 7 is 7.
 -- If RNG_2 & 7 is 7, then the function sets needToSave to true to signal that a savestate should be written into slot 5 at the end of this frame, 
--- adds the lag that occured from the last section of input to the running total, increases the number of loaded objects by 1 and effectively "moves forwards".
+-- adds the lag that occured since the last save state was made to the running total, increases the number of loaded objects by 1 and effectively "moves forwards".
 -- If RNG_2 & 7 wasn't 7, then needToLoad is set to true to signal that savestate 5 should be re-loaded at the end of this frame, 
 -- the counter for lag that occured since the last save state is set to 0, 
 -- and the value for current frame is set to the frame number of the last save (in effect, "going backwards")
@@ -178,7 +178,7 @@ end
 -- Note: if there were more than 8 frames b/w two objects loading and RNG_2 & 7 wasn't 7, then needToExtraSave will be set to true, 
 -- earlierBetterSave will be set to currentFrame - 8 and save state 5 will be reloaded. 
 -- When current frame equals earlierBetterSave for the next time, then a new save state will be written to slot 5. 
--- This cuts down on how long the script runs, since for example, if there were 100 frames b/w two objects loading and it took 30 attempts 
+-- This cuts down on how long the script runs, since, for example, if there were 100 frames b/w two objects loading and it took 30 attempts 
 -- to get RNG_2 to have the right value, then this would require running through 3,000 frames to get the right value, 
 -- while if a new save state was made on the 92nd frame on the second try, then only 416 frames would need to be run through to get the right value)
 
