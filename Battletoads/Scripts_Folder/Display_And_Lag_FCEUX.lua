@@ -91,17 +91,17 @@ function powerOfTwoCalculator(myInt)
 end
 
 
--- stores the names of buttons and what power of 2, when bitwise ANDed with the input number, will produce a non-zero number when the button is pressed.
+-- stores the names of buttons and how many squares to the left each button is starting from the left-most box.
 InputStringArray = {{"U", 4}, {"D", 5}, {"L", 6}, {"R", 7}, {"S", 3}, {"s", 2}, {"B", 1}, {"A", 0}}
 
 -- main execution loop.
 while true do
 	boxNum = 1
 	
+	isLag = emu.lagged()
 	-- Setting the color of the input display to green
 	innerColor = "#90EE90"
-	myInputVal = taseditor.getinput(emu.framecount(), 1)
-	isLag = emu.lagged()
+	myInputVal = taseditor.getinput(emu.framecount() - 1, 1)
 
 	-- if we have a lag frame, then the input display is changed to red. Otherwise, it remains green.
 	if isLag then
