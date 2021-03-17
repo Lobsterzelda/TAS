@@ -1,4 +1,8 @@
-This File lists all RNG values that the game uses in order. RNG is stored in address 0X02 by the game, and moves in a cycle through the following 207 values. I have included next to each value what spawns when you kill a fish with the RNG equal to that value. There are 3 possible things which can happen when you kill a fish on a depth where a diver can spawn: Nothing happens, a diver spawns on the left side of the screen, or a diver spawns on the right side of the screen.
+This File lists all RNG values that the game uses in order. RNG is stored in address 0X02 by the game, and moves in a cycle through the following 207 values. 
+I have included next to each value what spawns when you kill a fish with the RNG equal to that value. There are 3 possible things which can happen when you 
+kill a fish on a depth where a diver can spawn: Nothing happens, a diver spawns on the left side of the screen, or a diver spawns on the right side of the screen.
+
+-------------------------------------------------
 
 RNG Val of 8: Nothing
 RNG Val of 66: Nothing
