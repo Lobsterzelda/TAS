@@ -1,0 +1,219 @@
+This File lists all RNG values that the game uses in order. RNG is stored in address 0X02 by the game, and moves in a cycle through the following 207 values. I have included next to each value what spawns when you kill a fish with the RNG equal to that value. There are 3 possible things which can happen when you kill a fish on a depth where a diver can spawn: Nothing happens, a diver spawns on the left side of the screen, or a diver spawns on the right side of the screen.
+
+RNG Val of 8: Nothing
+RNG Val of 66: Nothing
+RNG Val of 18: Nothing
+RNG Val of 148: Diver (left side)
+RNG Val of 161: Diver (left side)
+RNG Val of 13: Nothing
+RNG Val of 107: Diver (right side)
+RNG Val of 89: Diver (right side)
+RNG Val of 204: Diver (right side)
+RNG Val of 101: Diver (left side)
+RNG Val of 42: Nothing
+RNG Val of 83: Diver (left side)
+RNG Val of 158: Diver (right side)
+RNG Val of 243: Diver (left side)
+RNG Val of 155: Diver (right side)
+RNG Val of 218: Diver (right side)
+RNG Val of 208: Diver (left side)
+RNG Val of 130: Diver (left side)
+RNG Val of 20: Nothing
+RNG Val of 165: Diver (left side)
+RNG Val of 44: Nothing
+RNG Val of 98: Diver (left side)
+RNG Val of 19: Nothing
+RNG Val of 156: Diver (right side)
+RNG Val of 227: Diver (left side)
+RNG Val of 31: Nothing
+RNG Val of 255: Diver (right side)
+RNG Val of 248: Diver (right side)
+RNG Val of 193: Diver (left side)
+RNG Val of 14: Nothing
+RNG Val of 115: Diver (left side)
+RNG Val of 159: Diver (right side)
+RNG Val of 251: Diver (right side)
+RNG Val of 217: Diver (right side)
+RNG Val of 200: Diver (right side)
+RNG Val of 68: Nothing
+RNG Val of 35: Nothing
+RNG Val of 25: Nothing
+RNG Val of 206: Diver (right side)
+RNG Val of 117: Diver (left side)
+RNG Val of 174: Diver (right side)
+RNG Val of 118: Diver (left side)
+RNG Val of 182: Diver (left side)
+RNG Val of 176: Diver (left side)
+RNG Val of 129: Diver (left side)
+RNG Val of 12: Nothing 
+RNG Val of 99: Diver (left side)
+RNG Val of 27: Nothing
+RNG Val of 222: Diver (right side)
+RNG Val of 241: Diver (left side)
+RNG Val of 139: Diver (right side)
+RNG Val of 94: Diver (right side)
+RNG Val of 245: Diver (left side)
+RNG Val of 170: Diver (right side)
+RNG Val of 87: Diver (left side)
+RNG Val of 191: Diver (right side)
+RNG Val of 250: Diver (right side)
+RNG Val of 209: Diver (left side)
+RNG Val of 138: Diver (right side)
+RNG Val of 86: Diver (left side)
+RNG Val of 183: Diver (left side)
+RNG Val of 184: Diver (right side)
+RNG Val of 195: Diver (left side)
+RNG Val of 30: Nothing
+RNG Val of 247: Diver (left side)
+RNG Val of 186: Diver (right side)
+RNG Val of 211: Diver (left side)
+RNG Val of 154: Diver (right side)
+RNG Val of 210: Diver (left side)
+RNG Val of 146: Diver (left side)
+RNG Val of 144: Diver (left side)
+RNG Val of 128: Diver (left side)
+RNG Val of 4: Nothing
+RNG Val of 33: Nothing
+RNG Val of 9: Nothing
+RNG Val of 74: Nothing
+RNG Val of 80: Diver (left side)
+RNG Val of 134: Diver (left side)
+RNG Val of 53: Nothing
+RNG Val of 172: Diver (right side)
+RNG Val of 102: Diver (left side)
+RNG Val of 50: Nothing
+RNG Val of 149: Diver (left side)
+RNG Val of 169: Diver (right side)
+RNG Val of 79: Nothing
+RNG Val of 121: Diver (right side)
+RNG Val of 205: Diver (right side)
+RNG Val of 109: Diver (right side)
+RNG Val of 104: Diver (right side)
+RNG Val of 65: Nothing
+RNG Val of 10: Nothing
+RNG Val of 82: Diver (left side)
+RNG Val of 150: Diver (left side)
+RNG Val of 177: Diver (left side)
+RNG Val of 137: Diver (right side)
+RNG Val of 78: Nothing
+RNG Val of 113: Diver (left side)
+RNG Val of 143: Diver (right side)
+RNG Val of 127: Diver (right side)
+RNG Val of 252: Diver (right side)
+RNG Val of 224: Diver (left side)
+RNG Val of 7: Nothing
+RNG Val of 57: Nothing
+RNG Val of 207: Diver (right side)
+RNG Val of 125: Diver (right side)
+RNG Val of 236: Diver (right side)
+RNG Val of 100: Diver (left side)
+RNG Val of 34: Nothing
+RNG Val of 17: Nothing
+RNG Val of 140: Diver (right side)
+RNG Val of 103: Diver (left side)
+RNG Val of 58: Nothing
+RNG Val of 215: Diver (left side)
+RNG Val of 187: Diver (right side)
+RNG Val of 219: Diver (right side)
+RNG Val of 216: Diver (right side)
+RNG Val of 192: Diver (left side)
+RNG Val of 6: Nothing
+RNG Val of 49: Nothing
+RNG Val of 141: Diver (right side)
+RNG Val of 111: Diver (right side)
+RNG Val of 120: Diver (right side) 
+RNG Val of 197: Diver (left side)
+RNG Val of 47: Nothing
+RNG Val of 122: Diver (right side)
+RNG Val of 213: Diver (left side)
+RNG Val of 171: Diver (right side)
+RNG Val of 95: Diver (right side)
+RNG Val of 253: Diver (right side)
+RNG Val of 232: Diver (right side)
+RNG Val of 69: Nothing
+RNG Val of 43: Nothing
+RNG Val of 91: Diver (right side)
+RNG Val of 220: Diver (right side)
+RNG Val of 225: Diver (left side)
+RNG Val of 15: Nothing
+RNG Val of 123: Diver (right side)
+RNG Val of 221: Diver (right side)
+RNG Val of 233: Diver (right side)
+RNG Val of 77: Nothing
+RNG Val of 105: Diver (right side)
+RNG Val of 73: Nothing
+RNG Val of 72: Nothing
+RNG Val of 64: Nothing
+RNG Val of 2: Nothing
+RNG Val of 16: Nothing
+RNG Val of 132: Diver (left side)
+RNG Val of 37: Nothing
+RNG Val of 40: Nothing
+RNG Val of 67: Nothing
+RNG Val of 26: Nothing
+RNG Val of 214: Diver (left side)
+RNG Val of 179: Diver (left side)
+RNG Val of 153: Diver (right side)
+RNG Val of 202: Diver (right side)
+RNG Val of 84: Diver (left side)
+RNG Val of 167: Diver (left side)
+RNG Val of 60: Nothing
+RNG Val of 230: Diver (left side)
+RNG Val of 54: Nothing
+RNG Val of 180: Diver (left side)
+RNG Val of 160: Diver (left side)
+RNG Val of 5: Nothing
+RNG Val of 41: Nothing
+RNG Val of 75: Nothing
+RNG Val of 88: Diver (right side)
+RNG Val of 196: Diver (left side)
+RNG Val of 39: Nothing
+RNG Val of 56: Nothing
+RNG Val of 199: Diver (left side)
+RNG Val of 63: Nothing
+RNG Val of 254: Diver (right side)
+RNG Val of 240: Diver (left side)
+RNG Val of 131: Diver (left side)
+RNG Val of 28: Nothing
+RNG Val of 231: Diver (left side)
+RNG Val of 62: Nothing
+RNG Val of 246: Diver (left side)
+RNG Val of 178: Diver (left side)
+RNG Val of 145: Diver (left side)
+RNG Val of 136: Diver (right side)
+RNG Val of 70: Nothing
+RNG Val of 51: Nothing
+RNG Val of 157: Diver (right side)
+RNG Val of 235: Diver (right side)
+RNG Val of 93: Diver (right side)
+RNG Val of 237: Diver (right side)
+RNG Val of 108: Diver (right side)
+RNG Val of 96: Diver (left side)
+RNG Val of 3: Nothing
+RNG Val of 24: Nothing
+RNG Val of 198: Diver (left side)
+RNG Val of 55: Nothing
+RNG Val of 188: Diver (right side)
+RNG Val of 226: Diver (left side)
+RNG Val of 23: Nothing 
+RNG Val of 189: Diver (right side)
+RNG Val of 234: Diver (right side)
+RNG Val of 85: Diver (left side)
+RNG Val of 175: Diver (right side)
+RNG Val of 126: Diver (right side)
+RNG Val of 244: Diver (left side)
+RNG Val of 162: Diver (left side)
+RNG Val of 21: Nothing
+RNG Val of 173: Diver (right side)
+RNG Val of 110: Diver (right side) 
+RNG Val of 112: Diver (left side)
+RNG Val of 135: Diver (left side)
+RNG Val of 61: Nothing
+RNG Val of 238: Diver (right side)
+RNG Val of 116: Diver (left side)
+RNG Val of 166: Diver (left side)
+RNG Val of 52: Nothing
+RNG Val of 164: Diver (left side)
+RNG Val of 36: Nothing
+RNG Val of 32: Nothing
+RNG Val of 1: Nothing
