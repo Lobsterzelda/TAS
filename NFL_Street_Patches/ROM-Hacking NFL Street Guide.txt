@@ -1,0 +1,7 @@
+1. Download the file in this folder named Jailbreak_Patch.ppf
+2. Go to https://www.marcrobledo.com/RomPatcher.js/ . For original file, select your legally-obtained NFL Street.iso (the USA version). For the patch file, select the Jailbreak_Patch.ppf file. Now click "Apply Patch", and download the resulting .iso
+3. This new .iso is identical to the original, except that it disables the tamper/damage-check in the code which looks to see if any of the data was modified (this normally causes the game to get stuck on the loading screen if any data was changed).
+4. After you have made your ROM-Hack changes on this new .iso, go back to https://www.marcrobledo.com/RomPatcher.js/, and click on the option to switch to creator mode.
+5. For original ROM, put in an unmodified .iso of NFL Street (the USA version), and for modified ROM, put in your newly modified .iso file. Switch patch type to PPF, and click "Create Patch".
+6. Someone else can now download your patch and apply it to an original .iso of the USA version of the game via https://www.marcrobledo.com/RomPatcher.js/ in order to generate a ROM-Hack which has your changes in it.
+7. The file in this folder named Jailbreak_With_New_Stadium_Text_Patch.ppf shows a sample patch, which changes the description of the "EA Field" Stadium (the first stadium in the game).
